@@ -23,7 +23,7 @@ const Page = () => {
   return (
     <ScrollView>
       {pokemon.map((p) => (
-        <Link href={`/(pokemon)/${p.id}`}>
+        <Link href={`/(pokemon)/${p.id}`} asChild>
           <Pressable>
             <View style={styles.item}>
               <Image source={{ uri: p.image }} style={styles.preview} />
@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    height: 100,
   },
   preview: {
     width: 100,
@@ -52,5 +54,6 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 18,
     textTransform: 'capitalize',
+    flex: 1,
   },
 });
