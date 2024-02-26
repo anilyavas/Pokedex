@@ -2,6 +2,7 @@
   "expo": {
     "name": "PokedexApp",
     "slug": "PokedexApp",
+    "scheme": "pokeapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +29,9 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "experiments": {
+      "tsconfigPaths": true
+    }
   }
 }
