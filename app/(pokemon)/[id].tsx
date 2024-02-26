@@ -1,20 +1,35 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { useEffect, useState } from 'react';
-import { useLocalSearchParams } from 'expo-router';
-import { Pokemon, getPokemonDetails } from '@/api/pokeapi';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
+import { Pokemon, getPokemonDetail } from '@/api/pokeapi';
 
 const Page = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [details, setDetails] = useState<Pokemon>();
+  const navigation = useNavigation();
 
   useEffect(() => {
     const load = async () => {
-      const details = await getPokemonDetails(id!);
+      const details = await getPokemonDetail(id!);
       setDetails(details);
+      navigation.setOptions({
+        title: details.name.charAt(0).toUpperCase() + details.name.slice(1),
+      });
     };
   }, [id]);
   return (
-    <View style={styles.container}>
+    <View style={{ padding: 10 }}>
+      {details && (
+        <>
+          <View style={styles.card}>
+            <Image
+              source={{ uri: details.sprites.front_default }}
+              style={{ width: 200, height: 200 }}
+            />
+          </View>
+          <View style={styles.card}></View>
+        </>
+      )}
       <Text>{details?.name}</Text>
     </View>
   );
@@ -23,7 +38,9 @@ const Page = () => {
 export default Page;
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
+    backgroundColor: 'white',
     padding: 10,
+    margin: 10,
   },
 });

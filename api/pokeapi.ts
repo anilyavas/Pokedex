@@ -22,7 +22,7 @@ export const getPokemon = async (limit = 150): Promise<Pokemon[]> => {
   }));
 };
 
-export const getPokemonDetails = async (id: string): Promise<Pokemon[]> => {
+export const getPokemonDetail = async (id: string): Promise<Pokemon> => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${id}`);
   const data = await response.json();
   return data;
