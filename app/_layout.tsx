@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native';
 import { Stack } from 'expo-router';
 
 const Layout = () => {
@@ -15,6 +14,7 @@ const Layout = () => {
           title: 'Pokedex',
         }}
       />
+      <Stack.Screen name='(pokemon)/[id]' options={{ title: '' }} />
     </Stack>
   );
 };
