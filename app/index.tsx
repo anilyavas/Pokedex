@@ -26,7 +26,7 @@ const Page = () => {
         <Link href={`/(pokemon)/${p.id}`} key={p.id} asChild>
           <Pressable>
             <View style={styles.item}>
-              <Image source={{ uri: p.image }} style={styles.preview} />
+              <Image source={{ uri: p.image }} style={styles.image} />
               <Text style={styles.itemText}>{p.name}</Text>
               <Ionicons name='chevron-forward' size={24} />
             </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 100,
   },
-  preview: {
+  image: {
     width: 100,
     height: 100,
   },
